@@ -6,12 +6,15 @@ import Vault from '../components/Vault.tsx'
 <Layout>
   <div class="vault-hero">
     <span class="vault-badge">◈ nothing leaves your browser</span>
-    <h1>the <span class="lime">vault</span></h1>
+    <h1>free <span class="lime">hash</span> generator</h1>
     <p>
-      SHA-1/256/384/512, HMAC, base64 &amp; hex, cryptographic random bytes,
-      password generator with strength, and UUIDs — computed locally with the
-      Web Crypto API. No upload, no server, no signup.
+      SHA-1/256/384/512, HMAC, base64 &amp; hex, random bytes, a password
+      generator, and UUIDs — computed locally with the Web Crypto API. No
+      upload, no server, no signup.
     </p>
+    <a class="vault-cta" href="#oz-main-tool">open the vault ↓</a>
   </div>
-  <Vault client:load />
+  <div id="oz-main-tool">
+    <Vault client:load />
+  </div>
 </Layout>

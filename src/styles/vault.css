@@ -17,6 +17,23 @@
   margin: var(--oz-space-3) auto 0;
   font-size: 0.95rem;
 }
+.vault-cta {
+  display: inline-block;
+  margin-top: var(--oz-space-5);
+  font-family: var(--oz-font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  color: var(--oz-accent);
+  border: 1px solid var(--oz-border);
+  border-radius: var(--oz-radius-full);
+  padding: 0.55em 1.4em;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.vault-cta:hover {
+  border-color: var(--oz-accent);
+  box-shadow: 0 0 0 3px var(--vault-glow);
+}
 .vault-badge {
   display: inline-flex;
   align-items: center;

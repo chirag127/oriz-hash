@@ -6,11 +6,26 @@ import OzToolShell from '@chirag127/oz-chrome/components/OzToolShell.astro'
 interface Props {
   title?: string
   description?: string
+  path?: string
 }
 const {
-  title = 'oriz-hash — vault',
-  description = 'Client-side crypto & hash toolkit: SHA-1/256/384/512, HMAC, base64/hex, random bytes, password generator, UUID. Nothing leaves your browser.',
+  title = 'oriz Hash — Free SHA-256/512 & HMAC Generator, No Signup',
+  description = 'Free online hash generator — SHA-1/256/384/512, HMAC, base64 & hex, random bytes, password generator, UUID. 100% in your browser, nothing uploaded, no signup.',
+  path = '/',
 } = Astro.props
+const site = Astro.site ?? new URL('https://hash.oriz.in')
+const canonical = new URL(path, site).href
+const ogImage = new URL('/icons/icon-512.png', site).href
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'oriz Hash',
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Web',
+  url: site.href,
+  description,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+}
 ---
 
 <!doctype html>
@@ -18,7 +33,9 @@ const {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/icons/icon-192.png" />
     <meta name="theme-color" content="#c6ff35" />
@@ -26,7 +43,17 @@ const {
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Hash" />
-    <title>{title}</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="oriz Hash" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
     <script src="/src/pwa.ts"></script>
   </head>
