@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>oriz-hash — about this project</title>
+<meta name="description" content="About oriz-hash: a 100% client-side crypto & hash toolkit (SHA, HMAC, base64/hex, random, passwords, UUID). This is the project info page — the live app is at hash.oriz.in." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0e0f'/%3E%3Ctext x='16' y='22' font-size='18' text-anchor='middle' fill='%23c6ff35' font-family='monospace'%3E%23%3C/text%3E%3C/svg%3E" />
+<style>
+  :root { --bg:#0f1115; --card:#171a21; --ink:#e7e9ee; --muted:#9aa2b1; --accent:#3f7bd8; --border:#262b36; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
+  .wrap { max-width:760px; margin:0 auto; padding:48px 20px 80px; }
+  .tag { display:inline-block; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); border:1px solid var(--border); border-radius:999px; padding:4px 12px; margin-bottom:20px; }
+  h1 { font-size:2rem; margin:0 0 8px; }
+  h1 .mono { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; color:var(--accent); }
+  .lede { color:var(--muted); font-size:1.05rem; margin:0 0 28px; }
+  .cta { display:flex; flex-wrap:wrap; gap:12px; margin:0 0 36px; }
+  .btn { display:inline-block; padding:11px 18px; border-radius:10px; text-decoration:none; font-weight:600; font-size:.95rem; border:1px solid var(--border); color:var(--ink); background:var(--card); }
+  .btn.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+  section { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:22px 24px; margin:0 0 20px; }
+  h2 { font-size:1.15rem; margin:0 0 12px; }
+  ul { margin:0; padding-left:20px; } li { margin:6px 0; }
+  code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; background:#0b0e0f; border:1px solid var(--border); border-radius:6px; padding:1px 6px; font-size:.88em; }
+  a { color:var(--accent); }
+  .links a { display:block; margin:6px 0; }
+  footer { color:var(--muted); font-size:.85rem; margin-top:28px; text-align:center; }
+  .note { color:var(--muted); font-size:.9rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="tag">About this project</span>
+  <h1>the <span class="mono">#</span> oriz-hash</h1>
+  <p class="lede">A crypto/hash toolkit — SHA, HMAC, base64/hex, random, passwords, UUID — that runs entirely in your browser. This page describes the project; the tool itself lives at hash.oriz.in.</p>
+
+  <div class="cta">
+    <a class="btn primary" href="https://hash.oriz.in">Open the live app &rarr;</a>
+    <a class="btn" href="https://github.com/chirag127/oriz-hash">Source on GitHub</a>
+    <a class="btn" href="https://hash.oriz.in/llms.txt">llms.txt</a>
+  </div>
+
+  <section>
+    <h2>What it is</h2>
+    <p>oriz-hash ("the vault") is a single-page, 100% client-side toolkit for the everyday cryptographic primitives developers reach for. Every operation uses the browser's native Web Crypto API — there is no backend, no file upload, no account, and no tracking.</p>
+  </section>
+
+  <section>
+    <h2>Key features</h2>
+    <ul>
+      <li><strong>Hash</strong> — SHA-1, SHA-256, SHA-384, SHA-512 of text or any dropped file; hex or base64 output.</li>
+      <li><strong>HMAC</strong> — keyed MAC over a message; key as text/hex/base64, any SHA algorithm.</li>
+      <li><strong>Base64 / Hex</strong> — encode &amp; decode both ways, incl. hex&harr;base64 and URL-safe base64.</li>
+      <li><strong>Random bytes</strong> — cryptographically secure via <code>crypto.getRandomValues</code>; hex + base64.</li>
+      <li><strong>Password generator</strong> — CSPRNG, tunable sets, no-look-alike option, live entropy strength meter.</li>
+      <li><strong>UUID v4</strong> — via <code>crypto.randomUUID</code>.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Tech</h2>
+    <ul>
+      <li>Client-only <strong>Astro</strong> (static) + React 19 islands + Tailwind v4.</li>
+      <li>Zero external crypto deps — native <code>crypto.subtle</code> / <code>crypto.getRandomValues</code> / <code>crypto.randomUUID</code>.</li>
+      <li>Optional AI polish via <strong>@chirag127/oz-ai</strong> (g4f, no key, multi-provider failover); core tools work if AI is down.</li>
+      <li><strong>PWA-installable</strong>, offline-capable.</li>
+      <li><strong>100% in-browser</strong> — no upload, no signup. Free &amp; open source (MIT).</li>
+    </ul>
+  </section>
+
+  <section class="links">
+    <h2>Links</h2>
+    <a href="https://hash.oriz.in">Live app &mdash; hash.oriz.in</a>
+    <a href="https://github.com/chirag127/oriz-hash">Source repository &mdash; github.com/chirag127/oriz-hash</a>
+    <a href="https://hash.oriz.in/llms.txt">llms.txt &mdash; for AI/agents</a>
+    <a href="https://hash.oriz.in/llms-full.txt">llms-full.txt &mdash; full content for LLM ingestion</a>
+  </section>
+
+  <p class="note">Note: this is the project info page. For the actual tool, open <a href="https://hash.oriz.in">hash.oriz.in</a>.</p>
+  <footer>MIT &copy; 2026 Chirag Singhal &middot; part of the oriz.in fleet</footer>
+</div>
+</body>
+</html>
