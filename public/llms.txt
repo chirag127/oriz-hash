@@ -1,0 +1,24 @@
+# oriz-hash
+
+> Client-side crypto & hash toolkit. SHA-1/256/384/512, HMAC, base64/hex, cryptographically-secure random bytes, password generator, and UUID v4 — computed entirely in your browser with the native Web Crypto API. No upload, no server, no signup.
+
+Live app: https://hash.oriz.in — everything runs locally; nothing is ever sent to a server. Free and open source (MIT).
+
+## Tools
+
+- [Hash](https://hash.oriz.in/): SHA-1, SHA-256, SHA-384, SHA-512 of text or any dropped file; hex or base64 output.
+- [HMAC](https://hash.oriz.in/): keyed message authentication code over a message; key as text/hex/base64, any SHA algorithm.
+- [Base64 / Hex](https://hash.oriz.in/): encode & decode both ways, including hex to base64 and URL-safe base64.
+- [Random bytes](https://hash.oriz.in/): cryptographically secure random via crypto.getRandomValues, output as hex + base64.
+- [Password generator](https://hash.oriz.in/): CSPRNG-based, tunable character sets, no-look-alike option, live entropy-based strength meter.
+- [UUID v4](https://hash.oriz.in/): generated via crypto.randomUUID.
+
+## About
+
+- [Info page](https://chirag127.github.io/oriz-hash/): what oriz-hash is, features, tech, and links.
+- [Source (GitHub)](https://github.com/chirag127/oriz-hash): MIT-licensed, Astro + React 19 + Tailwind v4.
+- [Full LLM text](https://hash.oriz.in/llms-full.txt): complete site content as markdown for AI ingestion.
+
+## Optional
+
+- AI polish: explains hash-algorithm choice and assesses a password pattern (never the secret itself) via @chirag127/oz-ai (g4f, no key, multi-provider failover). Core tools work even if AI is unavailable.

@@ -1,0 +1,77 @@
+# oriz-hash — the vault
+
+Client-side crypto & hash toolkit. SHA-1/256/384/512, HMAC, base64 & hex, cryptographically secure random bytes, a password generator with a strength meter, and UUID v4 — all computed locally in your browser with the native Web Crypto API. No upload, no server, no signup. Nothing ever leaves your browser.
+
+Live app: https://hash.oriz.in
+Source: https://github.com/chirag127/oriz-hash
+License: MIT
+
+## What it is
+
+oriz-hash ("the vault") is a single-page, 100% client-side toolkit for the everyday cryptographic primitives developers reach for: hashing, HMAC, encoding conversions, secure randomness, password generation, and UUIDs. Every operation uses the browser's native crypto.subtle, crypto.getRandomValues, and crypto.randomUUID. There is no backend, no file upload, no account, and no tracking. It is installable as a PWA and works offline.
+
+## Hero
+
+Badge: nothing leaves your browser.
+Heading: the vault.
+Summary: SHA-1/256/384/512, HMAC, base64 & hex, cryptographic random bytes, password generator with strength, and UUIDs — computed locally with the Web Crypto API. No upload, no server, no signup.
+
+## Tools
+
+### Hash — SHA-1 / 256 / 384 / 512
+Hash text or any dropped file. Type a message into the box, or drag-and-drop a file (files are read locally and never uploaded). Digests for all four SHA algorithms are shown at once. Choose hex or base64 output encoding. Optional AI action "explain choice" advises which SHA to pick for a general integrity checksum and why SHA-1 should be avoided for security (practical collisions).
+
+### HMAC
+Keyed message authentication code (HMAC) over a message. Provide a key as text, hex, or base64, and select any SHA algorithm (SHA-1/256/384/512). Output in hex or base64. Useful for signing payloads, verifying webhooks, and API request signatures.
+
+### Base64 / Hex codec
+Encode and decode in both directions: text to base64, base64 to text, text to hex, hex to text, plus hex to base64 and base64 to hex conversions. Supports URL-safe base64.
+
+### Random bytes
+Generate cryptographically secure random bytes using crypto.getRandomValues. Choose a length (1 to 1024 bytes). Output shown as both hex and base64. Suitable for keys, salts, nonces, and tokens.
+
+### Password generator
+Generate strong passwords with a CSPRNG. Tune length (4 to 64) and toggle character sets: lowercase, uppercase, digits, symbols. Optional "no look-alikes" mode drops ambiguous characters. A live strength meter shows an entropy-based label and approximate bits of entropy. Optional AI action "assess" evaluates the password PATTERN only (length + character sets + entropy bits) — the actual password is never shared — and advises whether it is strong enough for high-value accounts vs throwaway accounts.
+
+### UUID v4
+Generate version-4 UUIDs via crypto.randomUUID (5 at a time).
+
+## How to use
+
+1. Open https://hash.oriz.in.
+2. Pick a tab: HASH, HMAC, BASE64/HEX, or RANDOM.
+3. Enter text or drop a file; results compute instantly and locally.
+4. Copy any output. Optionally install the app (PWA) for offline use.
+
+## Privacy & security model
+
+- 100% client-side. No data is uploaded or sent to any server for the core tools.
+- Files dropped for hashing are read in-browser only; they are never transmitted.
+- The optional AI features send only non-secret context: for hashing, a generic question about SHA choice; for passwords, only the pattern (length, character sets, approximate entropy) — never the actual password.
+- No signup, no account, no cookies for tracking.
+- Free and open source under the MIT license.
+
+## FAQ
+
+Q: Are my files or text uploaded anywhere?
+A: No. All hashing, encoding, and random generation happen locally using the Web Crypto API. Nothing leaves your browser.
+
+Q: Does the AI feature see my password?
+A: No. The password generator's AI "assess" only sends the pattern (length + character sets + entropy bits), never the secret itself.
+
+Q: Which SHA should I use?
+A: SHA-256 for general use; SHA-384/512 can be faster on 64-bit systems. Avoid SHA-1 for security — collisions are practical.
+
+Q: Does it work offline?
+A: Yes. It is a PWA and can be installed and used offline.
+
+Q: Is it free?
+A: Yes, free and open source (MIT).
+
+## Tech
+
+- Astro (static output) + React 19 islands + Tailwind v4.
+- Zero external crypto dependencies — native crypto.subtle, crypto.getRandomValues, crypto.randomUUID.
+- Shared @chirag127/oz-* packages for chrome, tokens, file utilities, and AI (oz-ai wraps g4f — keyless, multi-provider failover).
+- PWA-installable, offline-capable, no signup, no upload.
+- MIT licensed. Source at https://github.com/chirag127/oriz-hash.
