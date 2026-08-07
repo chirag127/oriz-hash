@@ -1,0 +1,33 @@
+---
+import '../styles/theme.css'
+import OzToolShell from '@chirag127/oz-chrome/components/OzToolShell.astro'
+
+interface Props {
+  title?: string
+  description?: string
+}
+const {
+  title = 'oriz-hash — vault',
+  description = 'Client-side crypto & hash toolkit: SHA-1/256/384/512, HMAC, base64/hex, random bytes, password generator, UUID. Nothing leaves your browser.',
+} = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <OzToolShell site="hash" title="vault" wordmarkHref="https://oriz.in" themeColor="#c6ff35">
+      <slot />
+      <Fragment slot="footer">
+        <a href="https://github.com/chirag127/oriz-hash">source</a>
+        <span>100% client-side</span>
+      </Fragment>
+    </OzToolShell>
+  </body>
+</html>

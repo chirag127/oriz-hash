@@ -1,0 +1,241 @@
+/* Vault tool UI — safe-door cards, tumbler tabs, digest readouts. */
+
+.vault-hero {
+  text-align: center;
+  padding: var(--oz-space-8) 0 var(--oz-space-6);
+}
+.vault-hero h1 {
+  font-family: var(--oz-font-mono);
+  font-size: clamp(2rem, 6vw, 3.4rem);
+  letter-spacing: -0.05em;
+  margin: 0;
+}
+.vault-hero h1 .lime { color: var(--oz-accent); }
+.vault-hero p {
+  color: var(--oz-muted);
+  max-width: 46ch;
+  margin: var(--oz-space-3) auto 0;
+  font-size: 0.95rem;
+}
+.vault-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5ch;
+  font-family: var(--oz-font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--oz-accent);
+  border: 1px solid var(--oz-border);
+  border-radius: var(--oz-radius-full);
+  padding: 0.35em 1em;
+  margin-bottom: var(--oz-space-4);
+}
+
+/* tumbler tab strip */
+.tumbler {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--oz-space-2);
+  justify-content: center;
+  margin: var(--oz-space-6) 0;
+}
+.tumbler button {
+  font-family: var(--oz-font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  background: var(--vault-steel);
+  color: var(--oz-muted);
+  border: 1px solid var(--oz-border);
+  border-radius: var(--oz-radius-m);
+  padding: 0.5em 1em;
+  cursor: pointer;
+  transition: color var(--oz-dur-fast) var(--oz-ease-out),
+    border-color var(--oz-dur-fast), box-shadow var(--oz-dur-base);
+}
+.tumbler button:hover { color: var(--oz-fg); border-color: var(--vault-rivet); }
+.tumbler button[aria-selected='true'] {
+  color: var(--oz-accent);
+  border-color: var(--oz-accent);
+  box-shadow: 0 0 0 1px var(--oz-accent), 0 0 18px -6px var(--vault-glow);
+}
+
+/* the safe card */
+.safe {
+  position: relative;
+  background: linear-gradient(160deg, var(--vault-steel-hi), var(--vault-steel));
+  border: 1px solid var(--oz-border);
+  border-radius: var(--oz-radius-l);
+  padding: var(--oz-space-6);
+  box-shadow: inset 0 1px 0 color-mix(in oklab, #fff 6%, transparent),
+    0 20px 40px -24px #000;
+}
+.safe::before,
+.safe::after {
+  /* corner rivets */
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, var(--vault-rivet), #0a0d0e);
+  box-shadow: 0 0 0 1px #000;
+}
+.safe::before { top: 12px; left: 12px; }
+.safe::after { top: 12px; right: 12px; }
+
+.safe h2 {
+  font-family: var(--oz-font-mono);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--oz-muted);
+  margin: 0 0 var(--oz-space-4);
+}
+
+.field { display: flex; flex-direction: column; gap: var(--oz-space-2); margin-bottom: var(--oz-space-4); }
+.field label {
+  font-family: var(--oz-font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--oz-muted);
+}
+.field textarea,
+.field input[type='text'],
+.field input[type='number'] {
+  width: 100%;
+  background: var(--oz-bg);
+  color: var(--oz-fg);
+  border: 1px solid var(--oz-border);
+  border-radius: var(--oz-radius-m);
+  padding: var(--oz-space-3);
+  font-family: var(--oz-font-mono);
+  font-size: 0.9rem;
+  resize: vertical;
+}
+.field textarea:focus,
+.field input:focus { outline: none; border-color: var(--oz-accent); }
+
+.row { display: flex; flex-wrap: wrap; gap: var(--oz-space-3); align-items: center; }
+.row.between { justify-content: space-between; }
+
+.seg { display: inline-flex; border: 1px solid var(--oz-border); border-radius: var(--oz-radius-m); overflow: hidden; }
+.seg button {
+  background: transparent;
+  color: var(--oz-muted);
+  border: 0;
+  padding: 0.45em 0.9em;
+  font-family: var(--oz-font-mono);
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+.seg button[aria-pressed='true'] { background: var(--oz-accent); color: var(--oz-accent-fg); }
+
+.chk { display: inline-flex; align-items: center; gap: 0.5ch; font-family: var(--oz-font-mono); font-size: 0.8rem; color: var(--oz-fg); cursor: pointer; }
+.chk input { accent-color: var(--oz-accent); }
+
+.btn {
+  font-family: var(--oz-font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  background: var(--oz-accent);
+  color: var(--oz-accent-fg);
+  border: 0;
+  border-radius: var(--oz-radius-m);
+  padding: 0.6em 1.2em;
+  cursor: pointer;
+  transition: filter var(--oz-dur-fast);
+}
+.btn:hover { filter: brightness(1.1); }
+.btn.ghost { background: transparent; color: var(--oz-accent); border: 1px solid var(--oz-border); }
+.btn.ghost:hover { border-color: var(--oz-accent); filter: none; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* digest readout */
+.digest {
+  margin-top: var(--oz-space-4);
+  background: var(--oz-bg);
+  border: 1px solid var(--oz-border);
+  border-left: 3px solid var(--oz-accent);
+  border-radius: var(--oz-radius-m);
+  padding: var(--oz-space-3);
+}
+.digest .lbl {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--oz-font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--oz-muted);
+  margin-bottom: var(--oz-space-2);
+}
+.digest code {
+  display: block;
+  font-family: var(--oz-font-mono);
+  font-size: 0.85rem;
+  word-break: break-all;
+  color: var(--oz-fg);
+  line-height: 1.5;
+}
+.copy {
+  background: transparent;
+  border: 1px solid var(--oz-border);
+  color: var(--oz-muted);
+  border-radius: var(--oz-radius-s);
+  font-family: var(--oz-font-mono);
+  font-size: 0.68rem;
+  padding: 0.2em 0.6em;
+  cursor: pointer;
+}
+.copy:hover { color: var(--oz-accent); border-color: var(--oz-accent); }
+
+.dropzone {
+  border: 1px dashed var(--oz-border);
+  border-radius: var(--oz-radius-m);
+  padding: var(--oz-space-6);
+  text-align: center;
+  color: var(--oz-muted);
+  font-family: var(--oz-font-mono);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: border-color var(--oz-dur-fast), background var(--oz-dur-fast);
+}
+.dropzone.over { border-color: var(--oz-accent); background: color-mix(in oklab, var(--oz-accent) 6%, transparent); }
+
+.hint { color: var(--oz-muted); font-size: 0.78rem; font-family: var(--oz-font-mono); }
+.err { color: var(--vault-danger); font-family: var(--oz-font-mono); font-size: 0.82rem; margin-top: var(--oz-space-2); }
+.warn { color: var(--vault-warn); }
+
+/* strength meter — the signature tumbler bar */
+.meter { display: flex; gap: 4px; margin-top: var(--oz-space-2); }
+.meter span {
+  flex: 1;
+  height: 6px;
+  border-radius: 2px;
+  background: var(--oz-border);
+  transition: background var(--oz-dur-base) var(--oz-ease-out);
+}
+.meter[data-score='0'] span:nth-child(-n + 1),
+.meter[data-score='1'] span:nth-child(-n + 2),
+.meter[data-score='2'] span:nth-child(-n + 3),
+.meter[data-score='3'] span:nth-child(-n + 4),
+.meter[data-score='4'] span:nth-child(-n + 5) { background: var(--oz-accent); }
+.meter[data-score='0'] span:nth-child(-n + 1) { background: var(--vault-danger); }
+.meter[data-score='1'] span:nth-child(-n + 2) { background: var(--vault-warn); }
+
+.ai-box {
+  margin-top: var(--oz-space-4);
+  border: 1px solid var(--oz-border);
+  border-radius: var(--oz-radius-m);
+  padding: var(--oz-space-3);
+  background: var(--oz-bg);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+.ai-box .thinking { color: var(--oz-muted); font-family: var(--oz-font-mono); }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--oz-space-4); }
+@media (max-width: 560px) { .grid2 { grid-template-columns: 1fr; } }

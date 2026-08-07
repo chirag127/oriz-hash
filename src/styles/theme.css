@@ -1,0 +1,111 @@
+/*
+ * oriz-hash bespoke theme — "the vault".
+ * Gunmetal steel + acid-lime. Mono-heavy. Tactile safe-door cards.
+ * Overrides the @chirag127/oz-tokens-base --oz-* contract; keeps the
+ * shared space/radii/motion primitives.
+ */
+@import '@fontsource-variable/space-grotesk';
+@import '@fontsource-variable/jetbrains-mono';
+@import '@chirag127/oz-tokens-base/contract.css';
+@import '@chirag127/oz-tokens-base/base.css';
+@import '@chirag127/oz-chrome/styles.css';
+
+:root {
+  color-scheme: dark;
+
+  /* --- gunmetal vault palette --- */
+  --oz-bg: #0b0e0f;
+  --oz-fg: #e7ede8;
+  --oz-surface: #14181a;
+  --oz-muted: #8a978f;
+  --oz-border: #283230;
+  --oz-accent: #c6ff35; /* acid lime */
+  --oz-accent-fg: #0b0e0f;
+
+  /* vault-specific extras */
+  --vault-steel: #1b2124;
+  --vault-steel-hi: #2a3237;
+  --vault-rivet: #3a4348;
+  --vault-danger: #ff5c5c;
+  --vault-warn: #ffc857;
+  --vault-glow: color-mix(in oklab, var(--oz-accent) 40%, transparent);
+
+  /* --- type: Space Grotesk display, JetBrains Mono everywhere digests live --- */
+  --oz-font-display: 'Space Grotesk Variable', system-ui, sans-serif;
+  --oz-font-body: 'Space Grotesk Variable', system-ui, sans-serif;
+  --oz-font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 80% -10%, color-mix(in oklab, var(--oz-accent) 6%, transparent), transparent),
+    repeating-linear-gradient(0deg, transparent, transparent 3px, color-mix(in oklab, #000 40%, transparent) 3px, color-mix(in oklab, #000 40%, transparent) 4px),
+    var(--oz-bg);
+  min-height: 100vh;
+}
+
+/* ---- chrome overrides: security-console header ---- */
+.oz-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--oz-space-4);
+  padding: var(--oz-space-4) var(--oz-space-6);
+  border-bottom: 1px solid var(--oz-border);
+  background: linear-gradient(180deg, var(--vault-steel), var(--oz-bg));
+  flex-wrap: wrap;
+}
+.oz-wordmark {
+  font-family: var(--oz-font-mono);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  text-decoration: none;
+  color: var(--oz-fg);
+  font-size: 1.15rem;
+}
+.oz-wordmark__dot { color: var(--oz-accent); }
+.oz-wordmark__site { color: var(--oz-muted); }
+.oz-header__title {
+  font-family: var(--oz-font-mono);
+  color: var(--oz-muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+.oz-header__nav { margin-left: auto; display: flex; gap: var(--oz-space-4); }
+.oz-header__nav a {
+  color: var(--oz-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-family: var(--oz-font-mono);
+}
+.oz-header__nav a:hover { color: var(--oz-accent); }
+
+.oz-footer {
+  border-top: 1px solid var(--oz-border);
+  padding: var(--oz-space-6);
+  display: flex;
+  justify-content: space-between;
+  gap: var(--oz-space-4);
+  flex-wrap: wrap;
+  color: var(--oz-muted);
+  font-family: var(--oz-font-mono);
+  font-size: 0.8rem;
+}
+.oz-footer a { color: var(--oz-accent); }
+.oz-footer__links { display: flex; gap: var(--oz-space-4); }
+
+.oz-main { max-width: 960px; margin: 0 auto; padding: var(--oz-space-8) var(--oz-space-6) var(--oz-space-16); }
+
+.oz-skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.oz-skip-link:focus {
+  left: var(--oz-space-4);
+  top: var(--oz-space-4);
+  z-index: 10;
+  background: var(--oz-accent);
+  color: var(--oz-accent-fg);
+  padding: var(--oz-space-2) var(--oz-space-4);
+  border-radius: var(--oz-radius-s);
+}

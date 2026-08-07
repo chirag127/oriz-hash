@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Vault from '../components/Vault.tsx'
+---
+
+<Layout>
+  <div class="vault-hero">
+    <span class="vault-badge">◈ nothing leaves your browser</span>
+    <h1>the <span class="lime">vault</span></h1>
+    <p>
+      SHA-1/256/384/512, HMAC, base64 &amp; hex, cryptographic random bytes,
+      password generator with strength, and UUIDs — computed locally with the
+      Web Crypto API. No upload, no server, no signup.
+    </p>
+  </div>
+  <Vault client:load />
+</Layout>
